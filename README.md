@@ -312,7 +312,9 @@ Okay, so the YOLOv1 loss is comprised of 3 parts, namely: I) Classification loss
 ### 1. Classification loss
 
 If an object is detected in the box, the classification loss is as follows. Note that  `ψ`  is equal to 1, only if there is an object in a respective box, else, it is equal to zero.
+
 ![](https://latex.codecogs.com/png.image?\large&space;\dpi{120}\sum_{i=0}^{S^{2}}\Psi\sum_{c\;in\;classes}^{a}(P_{i\;ground\;truth}(c)-P_{i\;predicted}(c))^{2} "\sum_{i=0}^{S^{2}}\Psi\sum_{c\;in\;classes}^{a}(P_{i\;ground\;truth}(c)-P_{i\;predicted}(c))^{2}")
+
 ### 2. Localization loss
 
 The localization loss is only calculated for the boxes which have an object. Note that  `ψ`  is equal to 1, only if there is an object in a respective box, else, it is equal to zero. Also,  `w`  and  `h`  are the relative width and height of the bounding box. We do not want to weight absolute errors in large boxes and small boxes equally. i.e. a 2-pixel error in a large box is the same for a small box. To partially address this, YOLO predicts the square root of the bounding box width and height instead of the width and height. Lastly, to emphesize on the bounding box localization loss we multiply the loss by  `lambda`  which is equal to  `5`. The formula is noted below:
